@@ -4,6 +4,7 @@ C:\Users\Ayden\Desktop\Redux\Redux\ReduxExecutorUI\bin\Debug\net9.0-windows\Redu
 C:\Users\Ayden\Desktop\Redux\Redux\ReduxExecutorUI\bin\Debug\net9.0-windows\ReduxExecutorUI.dll
 C:\Users\Ayden\Desktop\Redux\Redux\ReduxExecutorUI\bin\Debug\net9.0-windows\ReduxExecutorUI.pdb
 C:\Users\Ayden\Desktop\Redux\Redux\ReduxExecutorUI\bin\Debug\net9.0-windows\ICSharpCode.AvalonEdit.dll
+C:\Users\Ayden\Desktop\Redux\Redux\ReduxExecutorUI\bin\Debug\net9.0-windows\WPF.UI.dll
 C:\Users\Ayden\Desktop\Redux\Redux\ReduxExecutorUI\obj\Debug\net9.0-windows\ReduxExecutorUI.csproj.AssemblyReference.cache
 C:\Users\Ayden\Desktop\Redux\Redux\ReduxExecutorUI\obj\Debug\net9.0-windows\MainWindow.baml
 C:\Users\Ayden\Desktop\Redux\Redux\ReduxExecutorUI\obj\Debug\net9.0-windows\MainWindow.g.cs

@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="AvalonEdit" Version="6.3.0.90" />
+    <PackageReference Include="Wpf.Ui" Version="3.4.2.7" />
   </ItemGroup>
 
 </Project>

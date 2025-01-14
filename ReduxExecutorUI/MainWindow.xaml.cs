@@ -1,71 +1,46 @@
-﻿using System.Windows;
-using System.Diagnostics;
-using Microsoft.Win32;
-using System.IO;
+﻿using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace ReduxExecutorUI {
     public partial class MainWindow : Window {
+        private static readonly HttpClient httpClient = new HttpClient();
+
         public MainWindow() {
             InitializeComponent();
-
-            // Enable dragging the window
-            this.MouseDown += (sender, e) => {
-                if (e.ChangedButton == System.Windows.Input.MouseButton.Left) {
-                    this.DragMove();
-                }
-            };
-        }
-
-        // Minimize Button Click Event
-        private void Minimize_Click(object sender, RoutedEventArgs e) {
-            this.WindowState = WindowState.Minimized;
-        }
-
-        // Close Button Click Event
-        private void Close_Click(object sender, RoutedEventArgs e) {
-            Application.Current.Shutdown();
-        }
-
-        // Inject Button Click Event
-        private void Inject_Click(object sender, RoutedEventArgs e) {
-            string dllPath = "sample.dll";
-
-            if (!File.Exists(dllPath)) {
-                MessageBox.Show("DLL not found. Please ensure sample.dll is in the application directory.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            // Reference the Injector class correctly
-            bool result = Injector.Inject("RobloxPlayerBeta", dllPath);
-
-            if (result) {
-                MessageBox.Show("Injection successful!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-            } else {
-                MessageBox.Show("Injection failed. Make sure Roblox is running.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        // Add Script Button Click Event
-        private void AddScript_Click(object sender, RoutedEventArgs e) {
-            OpenFileDialog openFileDialog = new OpenFileDialog {
-                Filter = "Lua Scripts (*.lua)|*.lua"
-            };
-
-            if (openFileDialog.ShowDialog() == true) {
-                string scriptName = Path.GetFileName(openFileDialog.FileName);
-                ScriptList.Items.Add(scriptName);
-                ScriptEditor.Text = File.ReadAllText(openFileDialog.FileName);
-            }
         }
 
         // Execute Button Click Event
-        private void Execute_Click(object sender, RoutedEventArgs e) {
-            if (string.IsNullOrWhiteSpace(ScriptEditor.Text)) {
-                MessageBox.Show("No script loaded. Please add a script first.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+        private async void Execute_Click(object sender, RoutedEventArgs e) {
+            string script = ScriptEditor.Text;
+
+            if (string.IsNullOrWhiteSpace(script)) {
+                MessageBox.Show("Please enter a script to execute.");
                 return;
             }
 
-            MessageBox.Show("Executing script: " + ScriptEditor.Text);
+            var result = await SendScriptToApi(script);
+
+            if (result.IsSuccessStatusCode) {
+                MessageBox.Show("Script executed successfully!");
+            } else {
+                MessageBox.Show("Failed to execute the script.");
+            }
+        }
+
+        private async Task<HttpResponseMessage> SendScriptToApi(string script) {
+            var payload = new {
+                script = script
+            };
+
+            var content = new StringContent(
+                Newtonsoft.Json.JsonConvert.SerializeObject(payload),
+                Encoding.UTF8,
+                "application/json"
+            );
+
+            return await httpClient.PostAsync("http://localhost:8000/execute_script", content);
         }
     }
 }

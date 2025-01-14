@@ -53,6 +53,10 @@
             "AvalonEdit": {
               "target": "Package",
               "version": "[6.3.0.90, )"
+            },
+            "Wpf.Ui": {
+              "target": "Package",
+              "version": "[3.4.2.7, )"
             }
           },
           "imports": [
