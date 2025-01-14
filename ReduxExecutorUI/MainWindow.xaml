@@ -5,7 +5,7 @@
         Title="Redux Executor" Height="450" Width="800" Background="#080808" WindowStyle="None" AllowsTransparency="True">
 
     <Window.Resources>
-        <!-- Rounded Style -->
+        <!-- Rounded Button Style -->
         <Style TargetType="Button">
             <Setter Property="Background" Value="#100117" />
             <Setter Property="Foreground" Value="White" />
@@ -37,14 +37,16 @@
             <Button Content="X" Width="30" Height="30" Click="Close_Click" HorizontalAlignment="Right"/>
         </StackPanel>
 
-        <!-- Main -->
+        <!-- Main Content -->
         <Grid Margin="10,50,10,10">
-            <!-- Script Hub -->
+            <!-- Script Hub Section -->
             <StackPanel HorizontalAlignment="Left" Width="300">
                 <TextBlock Text="Script Hub" Foreground="White" FontSize="18" Margin="0,0,0,10"/>
                 <ListBox x:Name="ScriptList" Background="#100117" Foreground="White" Height="200" Margin="0,0,0,10"/>
                 <Button Content="Add Script" Width="150" Click="AddScript_Click"/>
             </StackPanel>
+
+            <!-- Script Editor with Syntax Highlighting -->
             <StackPanel HorizontalAlignment="Right" Width="450">
                 <TextBlock Text="Lua Script Editor" Foreground="White" FontSize="18" Margin="0,0,0,10"/>
                 <avalonedit:TextEditor x:Name="ScriptEditor"
@@ -58,7 +60,7 @@
             </StackPanel>
 
             <!-- Inject Button -->
-            <Button Content="Inject" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="150" Height="40" Margin="0,0,10,10"/>
+            <Button Content="Inject" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="150" Height="40" Margin="0,0,10,10" Click="Inject_Click"/>
         </Grid>
     </Grid>
 </Window>

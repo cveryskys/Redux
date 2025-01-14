@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ReduxExecutorUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d1883227c7bed34341df0b1e6aa76547f85dc51")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c23f936154878315ccd9f645baea6d311cd32b05")]
 [assembly: System.Reflection.AssemblyProductAttribute("ReduxExecutorUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ReduxExecutorUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

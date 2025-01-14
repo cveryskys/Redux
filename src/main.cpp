@@ -1,7 +1,12 @@
 #include <iostream>
-#include <string>
+#include "injector.h"
 
 int main() {
-    std::cout << "Redux int" << std::endl;
+    std::string dllPath = "sample.dll";
+    std::cout << "Attempting to inject: " << dllPath << std::endl;
+
+    InjectScript(dllPath);
+
+
     return 0;
 }
